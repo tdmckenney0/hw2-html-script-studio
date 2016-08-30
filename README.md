@@ -18,3 +18,6 @@ Written in:
 Fill out the forms for the values you wish to use for the weapon. Hovering over each property reveals what it does.  Press `Build` to get a copy-paste-able `StartWeaponConfig()` function. 
 
 Enjoy!
+
+## Link 
+[Click here to use the Editor](https://tdmckenney0.github.io/hw2-html-script-studio/)
