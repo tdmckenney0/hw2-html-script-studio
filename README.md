@@ -17,6 +17,10 @@ Written in:
 
 Fill out the forms for the values you wish to use for the weapon. Hovering over each property reveals what it does.  Press `Build` to get a copy-paste-able `StartWeaponConfig()` function. 
 
+To edit an existing file, press the `Load File` button and paste the entire `*.wepn` file into the modal window. Click `ok`. The values have now been imported. 
+
+Press `Reset` to clear out all the values in the form. 
+
 Enjoy!
 
 ## Link 
