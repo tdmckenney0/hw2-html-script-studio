@@ -1,14 +1,21 @@
 import luaparse from 'luaparse';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 function App() {
 	const [body, setBody] = useState("");
+	const [parsed, setParsed] = useState(null);
+
+	useEffect(() => {
+		console.log(parsed);
+	});
 
 	const parseIt = (e) => {
 		e.preventDefault();
 
 		try {
-			console.log(luaparse.parse(body));
+			setParsed(luaparse.parse(body, {
+				comments: false
+			}));
 		} catch (e) {
 			console.error(e);
 		}		
