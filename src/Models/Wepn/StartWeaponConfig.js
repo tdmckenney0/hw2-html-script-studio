@@ -1,3 +1,4 @@
+import Model from '../Model.js';
 /**
  * 
  * @see http://hw2bsg.sourceforge.net/wiki.hw2.info/FunctionStartWeaponConfig.html
@@ -68,18 +69,20 @@ const ARG_MAP = [
     "iInstantHitThreshold"
 ];
 
-class StartWeaponConfig {
+class StartWeaponConfig extends Model {
     /**
      * Parse call to StartWeaponConfig.
      * 
      * @param {Obj} CallStatement AST from luaparse. 
      */
     constructor(CallStatement) {
+        super(CallStatement);
+
         if (typeof CallStatement.type !== 'undefined' && 
-            CallStatement.type == "CallStatement" && 
+            CallStatement.type === "CallStatement" && 
             typeof CallStatement.expression === 'object' &&
             typeof CallStatement.expression.base === 'object' &&
-            CallStatement.expression.base.name == "StartWeaponConfig" &&
+            CallStatement.expression.base.name === "StartWeaponConfig" &&
             typeof CallStatement.expression.arguments === 'object' &&
             Array.isArray(CallStatement.expression.arguments)
         ) {
@@ -112,6 +115,20 @@ class StartWeaponConfig {
         } else {
             throw new Error("StartWeaponConfig: Not a CallStatement!");
         }
+    }
+
+    /**
+     * Write the Lua Statement.
+     */
+    toLua() {
+        const args = ARG_MAP.reduce((c, v) => {
+            if (typeof this[v] !== 'undefined') {
+                c.push(this[v]);
+            }
+            return c;
+        }, []);
+
+        return "StartWeaponConfig(" + args.join(',') + ")";
     }
 }
 
