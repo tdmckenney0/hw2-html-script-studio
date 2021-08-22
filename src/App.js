@@ -1,25 +1,31 @@
-import logo from './logo.svg';
-import './App.css';
+import luaparse from 'luaparse';
+import { useState } from 'react';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+	const [body, setBody] = useState("");
+
+	const parseIt = (e) => {
+		e.preventDefault();
+
+		try {
+			console.log(luaparse.parse(body));
+		} catch (e) {
+			console.error(e);
+		}		
+	};
+
+	return <section className="section">
+		<div className="container">
+			<h1 className="title">
+				Homeworld Script Editor!
+			</h1>
+			<form>
+				<textarea className="textarea" placeholder="Put your script here..." onChange={(e) => setBody(e.target.value)} value={body}></textarea>
+				
+				<button className="button is-primary" onClick={parseIt}>Parse!</button>
+			</form>
+		</div>
+	</section>
 }
 
 export default App;
