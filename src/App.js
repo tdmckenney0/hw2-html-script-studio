@@ -1,5 +1,6 @@
 import luaparse from 'luaparse';
 import { useState, useEffect } from 'react';
+import StartWeaponConfig from './Models/Wepn/StartWeaponConfig.js';
 
 function App() {
 	const [body, setBody] = useState("");
@@ -7,6 +8,18 @@ function App() {
 
 	useEffect(() => {
 		console.log(parsed);
+
+		if (parsed && parsed.body && Array.isArray(parsed.body)) {
+			parsed.body.forEach((v, i, a) => {
+				if (v.type && v.type == "CallStatement") {
+					try {
+						console.log({ "StartWeaponConfig": new StartWeaponConfig(v) });
+					} catch (e) {
+						console.error(e);
+					}
+				}
+			});
+		}
 	});
 
 	const parseIt = (e) => {
