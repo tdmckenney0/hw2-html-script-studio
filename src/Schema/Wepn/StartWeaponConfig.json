@@ -9,11 +9,15 @@
         },
         "sWeaponType": {
             "type": "string",
-            "description": "How the weapon tracks targets. Possible values are \"Gimble\", \"AnimatedTurret\", or \"Fixed\". \"Gimble\" indicates the weapon is not in a turret but can aim at targets within a certain cone. \"AnimatedTurret\" indicates that the weapon is mounted in a visible, moving turret. \"Fixed\" indicates the weapon can only fire in a fixed (unchanging) direction, such as the ion cannon on the Ion Cannon Frigate."
+            "description": "How the weapon tracks targets. Possible values are \"Gimble\", \"AnimatedTurret\", or \"Fixed\". \"Gimble\" indicates the weapon is not in a turret but can aim at targets within a certain cone. \"AnimatedTurret\" indicates that the weapon is mounted in a visible, moving turret. \"Fixed\" indicates the weapon can only fire in a fixed (unchanging) direction, such as the ion cannon on the Ion Cannon Frigate.",
+            "enum": ["Gimble", "AnimatedTurret", "Fixed"],
+            "default": "Gimble"
         },
         "sWeaponFireType": {
             "type": "string",
-            "description": "Type of projectile, possible values are \"InstantHit\", \"Bullet\", \"Mine\", \"Missile\", or \"SphereBurst\". \"InstantHit\" is generally used with beam weapons, and causes the weapon's damage or other effects to take place immediately upon firing. \"Bullet\" indicates an unguided projectile. \"Mine\" indicates the projectile is dropped where the ship is located, and waits to detonate when an enemy ship moves nearby. \"Missile\" indicates a guided projectile. \"SphereBurst\" indicates an area of effect weapon. \"SphereBurst\" weapons require two \".wepn\" files to be defined. The first \".wepn\" file defines how the weapon is fired, while the second \".wepn\" file defines the effects of a hit or miss. See \"hgn_smallemp.wepn\" and \"hgn_smallempburst.wepn\" for an example."
+            "description": "Type of projectile, possible values are \"InstantHit\", \"Bullet\", \"Mine\", \"Missile\", or \"SphereBurst\". \"InstantHit\" is generally used with beam weapons, and causes the weapon's damage or other effects to take place immediately upon firing. \"Bullet\" indicates an unguided projectile. \"Mine\" indicates the projectile is dropped where the ship is located, and waits to detonate when an enemy ship moves nearby. \"Missile\" indicates a guided projectile. \"SphereBurst\" indicates an area of effect weapon. \"SphereBurst\" weapons require two \".wepn\" files to be defined. The first \".wepn\" file defines how the weapon is fired, while the second \".wepn\" file defines the effects of a hit or miss. See \"hgn_smallemp.wepn\" and \"hgn_smallempburst.wepn\" for an example.",
+            "enum": ["InstantHit", "Bullet", "Mine", "Missile", "SphereBurst"],
+            "default": "Bullet"
         },
         "sWeaponFireName": {
             "type": "string",
@@ -21,7 +25,9 @@
         },
         "sActivation": {
             "type": "string",
-            "description": "Indicates the context in which the weapon is used. Possible values are \"Normal\", \"Special Attack\", \"Normal Only\", or \"Dropped\". \"Normal\" indicates the weapon is always used during any attack. \"Special Attack\" indicates the weapon is used only after being activated by research or by the special attack key, which is also active only after researching something. \"Normal Only\" indicates the weapon is used only if a special attack is not researched. \"Dropped\" indicates that the weapon fires only when the Deploy Mines key is used. This is used with mines, only."
+            "description": "Indicates the context in which the weapon is used. Possible values are \"Normal\", \"Special Attack\", \"Normal Only\", or \"Dropped\". \"Normal\" indicates the weapon is always used during any attack. \"Special Attack\" indicates the weapon is used only after being activated by research or by the special attack key, which is also active only after researching something. \"Normal Only\" indicates the weapon is used only if a special attack is not researched. \"Dropped\" indicates that the weapon fires only when the Deploy Mines key is used. This is used with mines, only.",
+            "enum": ["Normal", "Special Attack", "Normal Only", "Dropped"],
+            "default": "Normal"
         },
         "fWeaponFireSpeed": {
             "type": "integer",
